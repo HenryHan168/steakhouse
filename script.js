@@ -267,4 +267,348 @@ window.addEventListener('error', (e) => {
 // Print functionality (bonus feature)
 function printMenu() {
     window.print();
+}
+
+// 促銷彈出窗口功能
+document.addEventListener('DOMContentLoaded', () => {
+    showPromotionPopup();
+});
+
+function showPromotionPopup() {
+    const currentDate = new Date();
+    const endDate = new Date('2025-07-03');
+    
+    // 檢查是否在促銷期間內
+    if (currentDate <= endDate) {
+        // 檢查是否已經顯示過（使用 localStorage）
+        const hasShownToday = localStorage.getItem('promotionShown_' + currentDate.toDateString());
+        
+        if (!hasShownToday) {
+            createPromotionPopup();
+            localStorage.setItem('promotionShown_' + currentDate.toDateString(), 'true');
+        }
+    }
+}
+
+function createPromotionPopup() {
+    // 創建彈出窗口元素
+    const popup = document.createElement('div');
+    popup.className = 'promotion-popup';
+    popup.innerHTML = `
+        <div class="promotion-overlay"></div>
+        <div class="promotion-content">
+            <button class="promotion-close">&times;</button>
+            <div class="promotion-image-container">
+                <img src="sales.jpg" alt="開幕促銷方案" class="promotion-image">
+                <div class="promotion-badge">
+                    <span>限時優惠</span>
+                </div>
+            </div>
+            <div class="promotion-text">
+                <h2>🎉 盛大開幕慶 🎉</h2>
+                <p>慶祝饗家牛排館盛大開幕，特別推出限時優惠！</p>
+                <div class="promotion-countdown">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">00</span>
+                        <span class="countdown-label">天</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">00</span>
+                        <span class="countdown-label">時</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">00</span>
+                        <span class="countdown-label">分</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">00</span>
+                        <span class="countdown-label">秒</span>
+                    </div>
+                </div>
+                <div class="promotion-buttons">
+                    <button class="btn btn-promotion" onclick="closePromotionPopup(); document.querySelector('#menu').scrollIntoView({behavior: 'smooth'});">
+                        立即查看菜單 🍽️
+                    </button>
+                    <button class="btn btn-promotion-secondary" onclick="closePromotionPopup(); document.querySelector('#contact').scrollIntoView({behavior: 'smooth'});">
+                        預約享優惠 📞
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // 添加樣式
+    const style = document.createElement('style');
+    style.textContent = `
+        .promotion-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: popupFadeIn 0.5s ease-out;
+        }
+
+        .promotion-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .promotion-content {
+            position: relative;
+            background: linear-gradient(135deg, #2c1810 0%, #3d2317 100%);
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            transform: scale(0.8);
+            animation: popupScale 0.5s ease-out 0.2s forwards;
+        }
+
+        .promotion-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .promotion-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .promotion-image-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promotion-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .promotion-content:hover .promotion-image {
+            transform: scale(1.05);
+        }
+
+        .promotion-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            animation: badgePulse 2s infinite;
+        }
+
+        .promotion-text {
+            padding: 25px;
+            text-align: center;
+            color: white;
+        }
+
+        .promotion-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #f7931e, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .promotion-text p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .promotion-countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .countdown-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 10px;
+            min-width: 60px;
+        }
+
+        .countdown-number {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #f7931e;
+        }
+
+        .countdown-label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .promotion-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .btn-promotion {
+            flex: 1;
+            background: linear-gradient(45deg, #f7931e, #ff6b35);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .btn-promotion:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(247, 147, 30, 0.4);
+        }
+
+        .btn-promotion-secondary {
+            flex: 1;
+            background: transparent;
+            color: #f7931e;
+            border: 2px solid #f7931e;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .btn-promotion-secondary:hover {
+            background: #f7931e;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        @keyframes popupFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes popupScale {
+            from { transform: scale(0.8); }
+            to { transform: scale(1); }
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @media (max-width: 600px) {
+            .promotion-content {
+                margin: 20px;
+            }
+            
+            .promotion-buttons {
+                flex-direction: column;
+            }
+            
+            .promotion-countdown {
+                gap: 10px;
+            }
+            
+            .countdown-item {
+                min-width: 50px;
+                padding: 8px;
+            }
+        }
+    `;
+
+    document.head.appendChild(style);
+    document.body.appendChild(popup);
+
+    // 啟動倒數計時器
+    startCountdown();
+
+    // 綁定關閉事件
+    popup.querySelector('.promotion-close').addEventListener('click', closePromotionPopup);
+    popup.querySelector('.promotion-overlay').addEventListener('click', closePromotionPopup);
+
+    // 防止背景滾動
+    document.body.style.overflow = 'hidden';
+}
+
+function closePromotionPopup() {
+    const popup = document.querySelector('.promotion-popup');
+    if (popup) {
+        popup.style.animation = 'popupFadeIn 0.3s ease-out reverse';
+        setTimeout(() => {
+            popup.remove();
+            document.body.style.overflow = 'auto';
+        }, 300);
+    }
+}
+
+function startCountdown() {
+    const endDate = new Date('2025-07-03 23:59:59');
+    
+    function updateCountdown() {
+        const now = new Date();
+        const timeLeft = endDate - now;
+
+        if (timeLeft > 0) {
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            const daysEl = document.getElementById('days');
+            const hoursEl = document.getElementById('hours');
+            const minutesEl = document.getElementById('minutes');
+            const secondsEl = document.getElementById('seconds');
+
+            if (daysEl) daysEl.textContent = days.toString().padStart(2, '0');
+            if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
+            if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
+            if (secondsEl) secondsEl.textContent = seconds.toString().padStart(2, '0');
+        }
+    }
+
+    updateCountdown();
+    const countdownInterval = setInterval(() => {
+        updateCountdown();
+        const popup = document.querySelector('.promotion-popup');
+        if (!popup) {
+            clearInterval(countdownInterval);
+        }
+    }, 1000);
 } 
