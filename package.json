@@ -1,0 +1,25 @@
+{
+  "name": "steakhouse-website",
+  "version": "1.0.0",
+  "description": "饗家牛排館官方網站",
+  "main": "index.html",
+  "scripts": {
+    "build": "npm run minify-js && npm run minify-css",
+    "minify-js": "terser script.js -o script.min.js -c -m",
+    "minify-css": "cleancss styles.css -o styles.min.css",
+    "obfuscate": "node build-tools.js",
+    "deploy": "npm run build && npm run obfuscate"
+  },
+  "devDependencies": {
+    "terser": "^5.16.1",
+    "clean-css-cli": "^5.6.1",
+    "javascript-obfuscator": "^4.0.2"
+  },
+  "keywords": [
+    "restaurant",
+    "steakhouse",
+    "website"
+  ],
+  "author": "饗家牛排館",
+  "license": "Private"
+} 

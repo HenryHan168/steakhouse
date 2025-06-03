@@ -1,3 +1,203 @@
+// 🛡️ 代碼保護措施 (基本級別)
+// 注意：這些措施只能防止一般使用者，無法阻止有經驗的開發者
+
+// 禁用右鍵選單
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    showProtectionMessage('請勿嘗試查看原始碼！');
+    return false;
+});
+
+// 禁用常用快捷鍵
+document.addEventListener('keydown', function(e) {
+    // 禁用 F12 (開發者工具)
+    if (e.key === 'F12') {
+        e.preventDefault();
+        showProtectionMessage('開發者工具已被禁用');
+        return false;
+    }
+    
+    // 禁用 Ctrl+Shift+I (開發者工具)
+    if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+        e.preventDefault();
+        showProtectionMessage('開發者工具已被禁用');
+        return false;
+    }
+    
+    // 禁用 Ctrl+Shift+J (控制台)
+    if (e.ctrlKey && e.shiftKey && e.key === 'J') {
+        e.preventDefault();
+        showProtectionMessage('控制台已被禁用');
+        return false;
+    }
+    
+    // 禁用 Ctrl+U (查看原始碼)
+    if (e.ctrlKey && e.key === 'u') {
+        e.preventDefault();
+        showProtectionMessage('查看原始碼已被禁用');
+        return false;
+    }
+    
+    // 禁用 Ctrl+S (儲存頁面)
+    if (e.ctrlKey && e.key === 's') {
+        e.preventDefault();
+        showProtectionMessage('儲存頁面已被禁用');
+        return false;
+    }
+    
+    // 禁用 Ctrl+A (全選)
+    if (e.ctrlKey && e.key === 'a') {
+        e.preventDefault();
+        showProtectionMessage('全選功能已被禁用');
+        return false;
+    }
+});
+
+// 禁用文字選取
+document.addEventListener('selectstart', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+// 禁用拖曳
+document.addEventListener('dragstart', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+// 檢測開發者工具是否開啟
+function detectDevTools() {
+    let devtools = {
+        open: false,
+        orientation: null
+    };
+    
+    const threshold = 160;
+    
+    setInterval(() => {
+        if (window.outerHeight - window.innerHeight > threshold ||
+            window.outerWidth - window.innerWidth > threshold) {
+            if (!devtools.open) {
+                devtools.open = true;
+                showProtectionMessage('檢測到開發者工具，頁面將被重新導向');
+                setTimeout(() => {
+                    window.location.href = 'about:blank';
+                }, 2000);
+            }
+        } else {
+            devtools.open = false;
+        }
+    }, 500);
+}
+
+// 顯示保護提示訊息
+function showProtectionMessage(message) {
+    // 創建提示框
+    const alertBox = document.createElement('div');
+    alertBox.className = 'protection-alert';
+    alertBox.textContent = message;
+    
+    // 樣式
+    const style = document.createElement('style');
+    style.textContent = `
+        .protection-alert {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 99999;
+            animation: protectionShake 0.5s ease-in-out;
+        }
+        
+        @keyframes protectionShake {
+            0%, 100% { transform: translate(-50%, -50%); }
+            25% { transform: translate(-48%, -50%); }
+            75% { transform: translate(-52%, -50%); }
+        }
+    `;
+    
+    document.head.appendChild(style);
+    document.body.appendChild(alertBox);
+    
+    // 3秒後自動移除
+    setTimeout(() => {
+        alertBox.remove();
+    }, 3000);
+}
+
+// 防止透過控制台執行代碼
+(function() {
+    try {
+        const devtools = /./;
+        devtools.toString = function() {
+            showProtectionMessage('檢測到控制台活動！');
+            return '';
+        };
+        console.log('%c', devtools);
+    } catch (e) {}
+})();
+
+// 混淆關鍵變數名稱
+const _0x1a2b = 'steakhouse-protection';
+const _0x3c4d = 'code-security-enabled';
+
+// 啟動保護機制
+document.addEventListener('DOMContentLoaded', function() {
+    detectDevTools();
+    
+    // 在控制台顯示警告
+    console.clear();
+    console.log('%c⚠️ 警告 ⚠️', 'color: red; font-size: 20px; font-weight: bold;');
+    console.log('%c此網站的代碼受到保護，請勿嘗試查看或修改！', 'color: orange; font-size: 14px;');
+    console.log('%c如有任何問題，請聯繫網站管理員。', 'color: blue; font-size: 12px;');
+});
+
+// CSS 保護樣式
+const protectionCSS = document.createElement('style');
+protectionCSS.textContent = `
+    /* 禁用選取 */
+    * {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-touch-callout: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* 允許輸入欄位選取 */
+    input, textarea {
+        -webkit-user-select: text;
+        -moz-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
+    }
+    
+    /* 隱藏圖片拖曳 */
+    img {
+        -webkit-user-drag: none;
+        -khtml-user-drag: none;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+        user-drag: none;
+        pointer-events: none;
+    }
+    
+    /* 點擊圖片時恢復功能 */
+    .gallery-item img {
+        pointer-events: auto;
+    }
+`;
+
+document.head.appendChild(protectionCSS);
+
 // DOM Elements
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
