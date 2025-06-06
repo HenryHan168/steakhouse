@@ -17,6 +17,7 @@ document.addEventListener('keydown', function(e) {
         return false;
     }
     
+    /* 
     // 禁用 Ctrl+Shift+I (開發者工具)
     if (e.ctrlKey && e.shiftKey && e.key === 'I') {
         e.preventDefault();
@@ -51,8 +52,10 @@ document.addEventListener('keydown', function(e) {
         showProtectionMessage('全選功能已被禁用');
         return false;
     }
+    */
 });
 
+/* 
 // 禁用文字選取
 document.addEventListener('selectstart', function(e) {
     e.preventDefault();
@@ -89,6 +92,7 @@ function detectDevTools() {
         }
     }, 500);
 }
+*/
 
 // 顯示保護提示訊息
 function showProtectionMessage(message) {
@@ -132,6 +136,7 @@ function showProtectionMessage(message) {
     }, 3000);
 }
 
+/* 
 // 防止透過控制台執行代碼
 (function() {
     try {
@@ -147,22 +152,26 @@ function showProtectionMessage(message) {
 // 混淆關鍵變數名稱
 const _0x1a2b = 'steakhouse-protection';
 const _0x3c4d = 'code-security-enabled';
+*/
 
 // 啟動保護機制
 document.addEventListener('DOMContentLoaded', function() {
-    detectDevTools();
+    // detectDevTools(); // 已註解
     
+    /* 
     // 在控制台顯示警告
     console.clear();
     console.log('%c⚠️ 警告 ⚠️', 'color: red; font-size: 20px; font-weight: bold;');
     console.log('%c此網站的代碼受到保護，請勿嘗試查看或修改！', 'color: orange; font-size: 14px;');
     console.log('%c如有任何問題，請聯繫網站管理員。', 'color: blue; font-size: 12px;');
+    */
 });
 
+/* 
 // CSS 保護樣式
 const protectionCSS = document.createElement('style');
 protectionCSS.textContent = `
-    /* 禁用選取 */
+    // 禁用選取
     * {
         -webkit-user-select: none;
         -moz-user-select: none;
@@ -172,7 +181,7 @@ protectionCSS.textContent = `
         -webkit-tap-highlight-color: transparent;
     }
     
-    /* 允許輸入欄位選取 */
+    // 允許輸入欄位選取
     input, textarea {
         -webkit-user-select: text;
         -moz-user-select: text;
@@ -180,7 +189,7 @@ protectionCSS.textContent = `
         user-select: text;
     }
     
-    /* 隱藏圖片拖曳 */
+    // 隱藏圖片拖曳
     img {
         -webkit-user-drag: none;
         -khtml-user-drag: none;
@@ -190,13 +199,14 @@ protectionCSS.textContent = `
         pointer-events: none;
     }
     
-    /* 點擊圖片時恢復功能 */
+    // 點擊圖片時恢復功能
     .gallery-item img {
         pointer-events: auto;
     }
 `;
 
 document.head.appendChild(protectionCSS);
+*/
 
 // DOM Elements
 const hamburger = document.querySelector('.hamburger');
@@ -811,4 +821,212 @@ function startCountdown() {
             clearInterval(countdownInterval);
         }
     }, 1000);
-} 
+}
+
+// 線上訂位功能增強
+document.addEventListener('DOMContentLoaded', () => {
+    // 檢測 Google Form 載入狀態
+    const iframe = document.querySelector('.reservation-iframe');
+    const tempMessage = document.querySelector('.temp-form-message');
+    
+    if (iframe && tempMessage) {
+        // 檢查是否已設置正確的 Google Form URL
+        const currentSrc = iframe.getAttribute('src');
+        const isValidForm = !currentSrc.includes('1FAIpQLSd8Q9X7YzQ3xKlPvJ2hN8mB4cF5gH6iE1wR9tY7uI3oP0aS2dF') && currentSrc.includes('docs.google.com/forms');
+        
+        if (isValidForm) {
+            // 如果已設置正確的表單，隱藏提示訊息，顯示表單
+            tempMessage.style.display = 'none';
+            iframe.style.display = 'block';
+            
+            iframe.addEventListener('load', () => {
+                console.log('Google Form 載入完成');
+                
+                // 添加載入完成的視覺反饋
+                const wrapper = document.querySelector('.google-form-wrapper');
+                if (wrapper) {
+                    wrapper.style.opacity = '1';
+                    wrapper.style.transform = 'translateY(0)';
+                }
+            });
+            
+            // 初始樣式
+            const wrapper = document.querySelector('.google-form-wrapper');
+            if (wrapper) {
+                wrapper.style.opacity = '0.8';
+                wrapper.style.transform = 'translateY(10px)';
+                wrapper.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            }
+        } else {
+            // 顯示設置提示
+            tempMessage.style.display = 'block';
+            iframe.style.display = 'none';
+            
+            // 添加設置完成提示
+            const setupBtn = tempMessage.querySelector('.btn');
+            if (setupBtn) {
+                setupBtn.addEventListener('click', () => {
+                    // 5秒後提示使用者重新整理頁面
+                    setTimeout(() => {
+                        if (confirm('完成表單建立後，請重新整理此頁面來顯示表單。\n\n是否要重新整理頁面？')) {
+                            window.location.reload();
+                        }
+                    }, 5000);
+                });
+            }
+        }
+    }
+    
+    // 訂位卡片動畫
+    const introCards = document.querySelectorAll('.intro-card');
+    introCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        
+        setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, index * 200);
+    });
+    
+    // 備用訂位按鈕點擊追蹤
+    const backupBtns = document.querySelectorAll('.backup-btn');
+    backupBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const btnType = btn.classList.contains('phone-backup') ? '電話' : 'LINE';
+            console.log(`用戶點擊了${btnType}訂位`);
+            
+            // 添加點擊效果
+            btn.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                btn.style.transform = '';
+            }, 150);
+        });
+    });
+});
+
+// 表單提交成功檢測 (Google Form)
+function detectFormSubmission() {
+    const iframe = document.querySelector('.reservation-iframe');
+    if (!iframe) return;
+    
+    try {
+        // 監聽 iframe 內容變化 (有限制，僅作參考)
+        iframe.addEventListener('load', () => {
+            // 檢查是否為提交成功頁面
+            try {
+                const iframeUrl = iframe.contentWindow.location.href;
+                if (iframeUrl.includes('formResponse')) {
+                    showReservationThankYou();
+                }
+            } catch (e) {
+                // 跨域限制，無法直接檢測
+                console.log('表單互動檢測受限於跨域政策');
+            }
+        });
+    } catch (e) {
+        console.log('表單提交檢測設置失敗');
+    }
+}
+
+// 顯示訂位感謝訊息
+function showReservationThankYou() {
+    const thankYouMessage = document.createElement('div');
+    thankYouMessage.className = 'reservation-thank-you';
+    thankYouMessage.innerHTML = `
+        <div class="thank-you-content">
+            <i class="fas fa-check-circle"></i>
+            <h3>訂位申請已送出！</h3>
+            <p>感謝您選擇饗家牛排館，我們將在2小時內回覆確認訊息</p>
+            <button onclick="closeThankYou()" class="btn btn-primary">知道了</button>
+        </div>
+    `;
+    
+    // 添加樣式
+    const style = document.createElement('style');
+    style.textContent = `
+        .reservation-thank-you {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .thank-you-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .thank-you-content i {
+            font-size: 4rem;
+            color: #28a745;
+            margin-bottom: 1rem;
+        }
+        
+        .thank-you-content h3 {
+            color: var(--dark-color);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .thank-you-content p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+    `;
+    
+    document.head.appendChild(style);
+    document.body.appendChild(thankYouMessage);
+}
+
+// 關閉感謝訊息
+function closeThankYou() {
+    const thankYou = document.querySelector('.reservation-thank-you');
+    if (thankYou) {
+        thankYou.style.opacity = '0';
+        setTimeout(() => {
+            thankYou.remove();
+        }, 300);
+    }
+}
+
+// 初始化表單檢測
+document.addEventListener('DOMContentLoaded', () => {
+    detectFormSubmission();
+});
+
+// 訂位區塊滾動視覺效果
+window.addEventListener('scroll', () => {
+    const reservationSection = document.querySelector('.reservation');
+    if (reservationSection) {
+        const rect = reservationSection.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        
+        if (isVisible) {
+            const scrollProgress = Math.min(1, Math.max(0, 
+                (window.innerHeight - rect.top) / (window.innerHeight + rect.height)
+            ));
+            
+            // 為訂位表單添加漸進式顯示效果
+            const formContainer = document.querySelector('.reservation-form-container');
+            if (formContainer) {
+                formContainer.style.transform = `translateY(${(1 - scrollProgress) * 20}px)`;
+                formContainer.style.opacity = scrollProgress;
+            }
+        }
+    }
+}); 

@@ -25,6 +25,7 @@
             <ul class="nav-menu">
                 <li><a href="#home">首頁</a></li>
                 <li><a href="#menu">菜單</a></li>
+                <!-- <li><a href="#reservation">線上訂位</a></li> -->
                 <li><a href="#about">關於我們</a></li>
                 <li><a href="#gallery">環境</a></li>
                 <li><a href="#contact">聯繫我們</a></li>
@@ -50,6 +51,82 @@
         </div>
         <div class="hero-scroll">
             <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Online Reservation Section -->
+    <section id="reservation" class="reservation">
+        <div class="container">
+            <div class="section-header">
+                <h2>電話訂位</h2>
+                <p>專業服務，即時確認</p>
+            </div>
+            
+            <div class="reservation-content">
+                <div class="reservation-intro">
+                    <div class="intro-card">
+                        <i class="fas fa-phone"></i>
+                        <h3>電話預約</h3>
+                        <p>專人服務，即時為您安排最佳座位</p>
+                    </div>
+                    <div class="intro-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>即時確認</h3>
+                        <p>通話中立即確認您的訂位需求</p>
+                    </div>
+                    <div class="intro-card">
+                        <i class="fas fa-star"></i>
+                        <h3>客製服務</h3>
+                        <p>可依需求安排特殊座位或慶祝活動</p>
+                    </div>
+                </div>
+
+                <!-- 電話訂位主要區域 -->
+                <div class="phone-reservation-main">
+                    <div class="phone-contact-card">
+                        <div class="phone-header">
+                            <i class="fas fa-phone-alt"></i>
+                            <h3>立即致電訂位</h3>
+                        </div>
+                        <div class="phone-number">
+                            <a href="tel:03-9592025" class="phone-link-large">03-9592025</a>
+                        </div>
+                        <div class="phone-info">
+                            <p>服務時間：每日 10:00-21:30</p>
+                            <p>專業客服團隊為您安排最佳用餐體驗</p>
+                        </div>
+                        <div class="phone-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>即時確認座位</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>客製化需求</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>特殊場合安排</span>
+                            </div>
+                        </div>
+                        <a href="tel:03-9592025" class="btn btn-primary btn-large">
+                            <i class="fas fa-phone"></i> 立即撥打訂位
+                        </a>
+                    </div>
+                </div>
+
+                <div class="reservation-notes">
+                    <h4><i class="fas fa-info-circle"></i> 訂位須知</h4>
+                    <ul>
+                        <li>建議提前1-3天預約，以確保有理想的座位</li>
+                        <li>特殊節日期間(如情人節、聖誕節等)建議提前1週預約</li>
+                        <li>如需包廂或特殊座位安排，請提前註明</li>
+                        <li>取消或更改訂位請提前24小時告知</li>
+                        <li>週末用餐時段較為熱門，建議儘早預約</li>
+                        <li>10人以上團體用餐請直接致電討論菜單安排</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -95,111 +172,159 @@
         <div class="container">
             <div class="section-header">
                 <h2>精選菜單</h2>
-                <p>嚴選頂級食材，專業廚藝呈現</p>
+                <p>每份套餐均附海鮮脆皮濃湯、無限自助吧享用</p>
             </div>
             <div class="menu-categories">
-                <button class="menu-tab active" data-category="steaks">牛排類</button>
-                <button class="menu-tab" data-category="appetizers">開胃菜</button>
-                <button class="menu-tab" data-category="sides">配菜</button>
-                <button class="menu-tab" data-category="desserts">甜點</button>
+                <button class="menu-tab active" data-category="meat">饗肉套餐</button>
+                <button class="menu-tab" data-category="seafood">饗鮮套餐</button>
+                <button class="menu-tab" data-category="pasta">饗麵套餐</button>
+                <button class="menu-tab" data-category="kids">兒童套餐</button>
             </div>
             
             <div class="menu-content">
-                <div id="steaks" class="menu-category active">
+                <div id="meat" class="menu-category active">
+                    <div class="category-header">
+                        <h3>饗肉套餐專區</h3>
+                        <p>每份套餐均附海鮮脆皮濃湯、無限自助吧享用</p>
+                    </div>
                     <div class="menu-grid">
                         <div class="menu-item">
-                            <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&h=300&fit=crop" alt="菲力牛排">
+                            <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&h=300&fit=crop" alt="鮮嫩豬排">
                             <div class="menu-item-content">
-                                <h3>頂級菲力牛排</h3>
-                                <p>精選澳洲和牛菲力，肉質鮮嫩，口感絕佳</p>
-                                <span class="price">$1,680</span>
+                                <h3>鮮嫩豬排</h3>
+                                <p>精選豬肉，嫩煎至完美熟度</p>
+                                <span class="price">$270</span>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=400&h=300&fit=crop" alt="肋眼牛排">
+                            <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=400&h=300&fit=crop" alt="脆皮雞腿排">
                             <div class="menu-item-content">
-                                <h3>美國肋眼牛排</h3>
-                                <p>美國Prime級肋眼，油花豐富，香氣濃郁</p>
-                                <span class="price">$1,480</span>
+                                <h3>脆皮雞腿排</h3>
+                                <p>外酥內嫩，香氣四溢的雞腿排</p>
+                                <span class="price">$290</span>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=400&h=300&fit=crop" alt="T骨牛排">
+                            <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=400&h=300&fit=crop" alt="炙烤沙朗">
                             <div class="menu-item-content">
-                                <h3>經典T骨牛排</h3>
-                                <p>同時享受菲力與紐約客的雙重口感</p>
-                                <span class="price">$1,880</span>
+                                <h3>炙烤沙朗</h3>
+                                <p>經典沙朗牛排，肉質鮮美</p>
+                                <span class="price">$310</span>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=400&h=300&fit=crop" alt="戰斧牛排">
+                            <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=400&h=300&fit=crop" alt="炙烤PS菲力">
                             <div class="menu-item-content">
-                                <h3>戰斧牛排</h3>
-                                <p>霸氣外觀，適合分享的超大份量牛排</p>
-                                <span class="price">$2,680</span>
+                                <h3>炙烤PS菲力</h3>
+                                <p>頂級菲力牛排，口感絕佳</p>
+                                <span class="price">$410</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&h=300&fit=crop" alt="Prime翼板雪花牛排">
+                            <div class="menu-item-content">
+                                <h3>Prime翼板雪花牛排</h3>
+                                <p>Prime等級翼板，油花豐富</p>
+                                <span class="price">$450</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=400&h=300&fit=crop" alt="小羔羊排">
+                            <div class="menu-item-content">
+                                <h3>小羔羊排</h3>
+                                <p>嫩羔羊排，香味獨特</p>
+                                <span class="price">$550</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=400&h=300&fit=crop" alt="炙烤Prime帶骨牛小排">
+                            <div class="menu-item-content">
+                                <h3>炙烤Prime帶骨牛小排</h3>
+                                <p>Prime等級帶骨牛小排，霸氣登場</p>
+                                <span class="price">$560</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=400&h=300&fit=crop" alt="炙烤Prime肋眼牛排">
+                            <div class="menu-item-content">
+                                <h3>炙烤Prime肋眼牛排</h3>
+                                <p>Prime等級肋眼，油脂豐富香濃</p>
+                                <span class="price">$700</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div id="appetizers" class="menu-category">
+                <div id="seafood" class="menu-category">
+                    <div class="category-header">
+                        <h3>饗鮮套餐專區</h3>
+                        <p>每份套餐均附海鮮脆皮濃湯、無限自助吧享用</p>
+                    </div>
                     <div class="menu-grid">
                         <div class="menu-item">
-                            <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400&h=300&fit=crop" alt="凱薩沙拉">
+                            <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400&h=300&fit=crop" alt="香煎比目魚">
                             <div class="menu-item-content">
-                                <h3>經典凱薩沙拉</h3>
-                                <p>新鮮生菜搭配自製凱薩醬</p>
-                                <span class="price">$280</span>
+                                <h3>香煎比目魚</h3>
+                                <p>新鮮比目魚，香煎至金黃</p>
+                                <span class="price">$290</span>
                             </div>
                         </div>
                         <div class="menu-item">
-                            <img src="https://images.unsplash.com/photo-1541014741259-de529411b96a?w=400&h=300&fit=crop" alt="蒜香麵包">
+                            <img src="https://images.unsplash.com/photo-1541014741259-de529411b96a?w=400&h=300&fit=crop" alt="海鮮雙饗">
                             <div class="menu-item-content">
-                                <h3>蒜香法式麵包</h3>
-                                <p>香脆法式麵包配蒜味奶油</p>
+                                <h3>海鮮雙饗</h3>
+                                <p>軟絲、海大蝦、比目魚任選二</p>
+                                <span class="price">$480</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="pasta" class="menu-category">
+                    <div class="category-header">
+                        <h3>饗麵套餐區</h3>
+                        <p>每份套餐均附海鮮脆皮濃湯、無限自助吧享用</p>
+                    </div>
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1518013431117-eb1465fa5752?w=400&h=300&fit=crop" alt="義大利麵">
+                            <div class="menu-item-content">
+                                <h3>義大利麵</h3>
+                                <p>經典義大利麵，多種口味選擇</p>
+                                <span class="price">$210</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="kids" class="menu-category">
+                    <div class="category-header">
+                        <h3>饗小胃口兒童套餐區</h3>
+                        <p>限定12歲以下，兒童餐附濃湯、無限自助吧享用</p>
+                    </div>
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&h=300&fit=crop" alt="兒童雞">
+                            <div class="menu-item-content">
+                                <h3>兒童雞</h3>
+                                <p>適合兒童的嫩雞套餐</p>
+                                <span class="price">$190</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&h=300&fit=crop" alt="兒童豬">
+                            <div class="menu-item-content">
+                                <h3>兒童豬</h3>
+                                <p>適合兒童的豬肉套餐</p>
                                 <span class="price">$180</span>
                             </div>
                         </div>
-                    </div>
-                </div>
-                
-                <div id="sides" class="menu-category">
-                    <div class="menu-grid">
                         <div class="menu-item">
-                            <img src="https://images.unsplash.com/photo-1518013431117-eb1465fa5752?w=400&h=300&fit=crop" alt="烤時蔬">
+                            <img src="https://images.unsplash.com/photo-1518976024611-28bf4b48222e?w=400&h=300&fit=crop" alt="兒童沙朗">
                             <div class="menu-item-content">
-                                <h3>季節烤時蔬</h3>
-                                <p>新鮮時令蔬菜，營養美味</p>
-                                <span class="price">$180</span>
-                            </div>
-                        </div>
-                        <div class="menu-item">
-                            <img src="https://images.unsplash.com/photo-1518976024611-28bf4b48222e?w=400&h=300&fit=crop" alt="薯條">
-                            <div class="menu-item-content">
-                                <h3>松露薯條</h3>
-                                <p>酥脆薯條淋上珍貴松露醬</p>
-                                <span class="price">$280</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div id="desserts" class="menu-category">
-                    <div class="menu-grid">
-                        <div class="menu-item">
-                            <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&h=300&fit=crop" alt="提拉米蘇">
-                            <div class="menu-item-content">
-                                <h3>經典提拉米蘇</h3>
-                                <p>義式經典甜點，濃郁香醇</p>
-                                <span class="price">$220</span>
-                            </div>
-                        </div>
-                        <div class="menu-item">
-                            <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&h=300&fit=crop" alt="巧克力蛋糕">
-                            <div class="menu-item-content">
-                                <h3>熔岩巧克力蛋糕</h3>
-                                <p>溫熱巧克力蛋糕配香草冰淇淋</p>
-                                <span class="price">$280</span>
+                                <h3>兒童沙朗</h3>
+                                <p>適合兒童的迷你沙朗牛排</p>
+                                <span class="price">$200</span>
                             </div>
                         </div>
                     </div>
@@ -260,16 +385,18 @@
                         <i class="fas fa-clock"></i>
                         <div>
                             <h3>營業時間</h3>
-                            <p>週一至週日</p>
-                            <p>午餐：11:30-14:30</p>
-                            <p>晚餐：17:30-22:00</p>
+                            <p>週一～週五</p>
+                            <p>午餐：11:00-14:00</p>
+                            <p>晚餐：17:00-21:30</p>
+                            <p>週六、日 & 國定假日</p>
+                            <p>11:00-21:30</p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
                         <div>
                             <h3>電子信箱</h3>
-                            <p><a href="mailto:info@steakhouse.com.tw" class="email-link">info@steakhouse.com.tw</a></p>
+                            <p><a href="mailto:home10180421@gmail.com" class="email-link">home10180421@gmail.com</a></p>
                         </div>
                     </div>
                 </div>
@@ -315,16 +442,17 @@
                     <ul>
                         <li><a href="#home">首頁</a></li>
                         <li><a href="#menu">菜單</a></li>
+                        <!-- <li><a href="#reservation">線上訂位</a></li> -->
                         <li><a href="#about">關於我們</a></li>
                         <li><a href="#contact">聯繫我們</a></li>
                     </ul>
                 </div>
-                <div class="footer-social" style="display: none;">
+                <div class="footer-social" >
                     <h4>社群媒體</h4>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-line"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61575225300109" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                        <!--<a href="#"><i class="fab fa-instagram"></i></a>-->
+                        <!--<a href="#"><i class="fab fa-line"></i></a>-->
                     </div>
                 </div>
             </div>

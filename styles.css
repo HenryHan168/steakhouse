@@ -570,11 +570,244 @@ html {
 }
 
 .reservation-card .btn {
-    padding: 1rem 2.5rem;
-    font-size: 1.1rem;
-    gap: 0.8rem;
+    margin-top: 1.5rem;
     display: inline-flex;
     align-items: center;
+    gap: 0.5rem;
+    background: var(--secondary-color);
+    color: var(--dark-color);
+    border-radius: 25px;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+}
+
+/* Online Reservation Section */
+.reservation {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--light-gray) 0%, #fff 100%);
+}
+
+.reservation-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.reservation-intro {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.intro-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(139, 69, 19, 0.1);
+}
+
+.intro-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.intro-card i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.intro-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+}
+
+.intro-card p {
+    color: var(--gray);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.reservation-form-container {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
+    border: 1px solid rgba(139, 69, 19, 0.1);
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--light-gray);
+}
+
+.form-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.form-header p {
+    color: var(--gray);
+    font-size: 1.1rem;
+}
+
+.google-form-wrapper {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    background: var(--white);
+}
+
+.reservation-iframe {
+    border: none;
+    width: 100%;
+    min-height: 800px;
+    border-radius: 15px;
+}
+
+.backup-contact {
+    margin-top: 2rem;
+}
+
+.contact-divider {
+    text-align: center;
+    margin: 2rem 0;
+    position: relative;
+}
+
+.contact-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gray), transparent);
+}
+
+.contact-divider span {
+    background: var(--white);
+    padding: 0 2rem;
+    color: var(--gray);
+    font-size: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.backup-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.backup-btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem;
+    background: var(--white);
+    border: 2px solid var(--light-gray);
+    border-radius: 15px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.backup-btn:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.backup-btn i {
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--white);
+}
+
+.phone-backup i {
+    background: linear-gradient(45deg, #007bff, #0056b3);
+}
+
+.line-backup i {
+    background: linear-gradient(45deg, #00c300, #009900);
+}
+
+.backup-btn div {
+    flex: 1;
+}
+
+.backup-btn strong {
+    display: block;
+    color: var(--dark-color);
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+}
+
+.backup-btn span {
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+.reservation-notes {
+    background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+    color: var(--white);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.reservation-notes h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--secondary-color);
+}
+
+.reservation-notes ul {
+    list-style: none;
+    padding: 0;
+}
+
+.reservation-notes li {
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.6;
+}
+
+.reservation-notes li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+    font-weight: bold;
+    font-size: 1.1rem;
 }
 
 /* Footer */
@@ -775,5 +1008,74 @@ html {
     
     .gallery-item {
         height: 250px;
+    }
+}
+
+/* Responsive Design for Reservation Section */
+@media (max-width: 768px) {
+    .reservation {
+        padding: 60px 0;
+    }
+    
+    .reservation-intro {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .intro-card {
+        padding: 1.5rem;
+    }
+    
+    .reservation-form-container {
+        padding: 1.5rem;
+        margin: 0 10px;
+    }
+    
+    .form-header h3 {
+        font-size: 1.5rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .reservation-iframe {
+        min-height: 700px;
+    }
+    
+    .backup-options {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .backup-btn {
+        padding: 1rem;
+    }
+    
+    .reservation-notes {
+        padding: 1.5rem;
+        margin: 0 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .reservation-form-container {
+        border-radius: 15px;
+        padding: 1rem;
+    }
+    
+    .reservation-iframe {
+        min-height: 600px;
+    }
+    
+    .intro-card {
+        padding: 1rem;
+    }
+    
+    .intro-card i {
+        font-size: 2.5rem;
+    }
+    
+    .reservation-notes {
+        padding: 1rem;
     }
 } 
