@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>菜單 - 饗家牛排館</title>
+    <meta name="description" content="饗家牛排館完整菜單">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .menu-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px 60px;
+        }
+        .menu-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #8B4513;
+            font-weight: 700;
+        }
+        .menu-images {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+        .menu-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .close-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #8B4513;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            z-index: 1000;
+        }
+        .close-btn:hover {
+            background: #5D2F0A;
+        }
+        @media (max-width: 768px) {
+            .menu-container {
+                padding: 60px 10px 40px;
+            }
+            .menu-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="close-btn" onclick="window.close()">關閉</button>
+    
+    <div class="menu-container">
+        <h1 class="menu-title">饗家牛排館 完整菜單</h1>
+        
+        <div class="menu-images">
+            <img src="menu1.jpg" alt="菜單第一頁" class="menu-image">
+            <img src="menu2.jpg" alt="菜單第二頁" class="menu-image">
+        </div>
+    </div>
+</body>
+</html> 
