@@ -789,7 +789,7 @@ function closePromotionPopup() {
 }
 
 function startCountdown() {
-    const endDate = new Date('2025-07-03 23:59:59');
+    const endDate = new Date('2025-07-02 11:00:00');
     
     function updateCountdown() {
         const now = new Date();
