@@ -235,22 +235,6 @@ html {
     color: var(--secondary-color);
 }
 
-/* Sales Banner Section */
-.sales-banner {
-    padding: 2rem 0;
-    background: var(--light-gray);
-}
-
-.sales-image {
-    width: 100%;
-    max-width: 800px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
 /* Section Headers */
 .section-header {
     text-align: center;
@@ -1002,10 +986,6 @@ html {
     .menu-tab {
         padding: 0.6rem 1.5rem;
         font-size: 0.9rem;
-    }
-    
-    .sales-image {
-        border-radius: 5px;
     }
     
     .phone-contact-card {

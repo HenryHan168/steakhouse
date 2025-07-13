@@ -221,6 +221,21 @@
 自動發送，請勿回覆
 ```
 
+## 📝 更新記錄
+
+### 2024年7月 - 移除促銷活動功能
+- 移除了首頁的促銷橫幅 (sales-banner) 區塊
+- 移除了開幕促銷彈出窗口功能
+- 移除了倒數計時器功能
+- 刪除了 `sales.jpg` 圖片文件
+- 清理了相關的 CSS 樣式和 JavaScript 代碼
+
+**影響範圍：**
+- `index.html`: 移除 sales-banner section
+- `styles.css`: 移除 .sales-banner 和 .sales-image 樣式
+- `script.js`: 移除促銷彈出窗口相關函數
+- 檔案系統: 刪除 sales.jpg
+
 ---
 
 **饗家牛排館** - 為您提供極致的牛排用餐體驗 
