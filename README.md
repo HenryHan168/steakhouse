@@ -38,6 +38,8 @@
 ├── replace-images.md    # 圖片替換指南
 ├── create-images.html   # 圖片生成工具
 ├── generate-images.js   # 批次圖片生成腳本
+├── .gitignore          # Git忽略文件
+├── gitignore-說明.md   # Git忽略文件說明
 └── README.md           # 說明文件
 ```
 
@@ -106,6 +108,12 @@
 - 自動化圖片生成工具
 - 詳細的圖片對應參照文件
 - 批次圖片處理腳本
+
+### 版本控制
+- 完整的 `.gitignore` 設定
+- 排除不必要的文件
+- 保護敏感資訊
+- 保持專案整潔
 
 ## 🎯 使用方法
 
