@@ -32,7 +32,7 @@ const menuItems = [
     { id: 'wing-steak', name: 'Prime翼板雪花牛排', price: '$450' },
     { id: 'lamb-chops', name: '小羔羊排', price: '$550' },
     { id: 'bone-in-ribeye', name: '炙烤Prime帶骨牛小排', price: '$560' },
-    { id: 'ribeye-steak', name: '炙烤Prime肋眼牛排', price: '$700' },
+    { id: 'ribeye-steak', name: '炙烤Prime肋眼牛排', price: '$630' },
     { id: 'flounder-fish', name: '香煎比目魚', price: '$290' },
     { id: 'seafood-combo', name: '海鮮雙饗', price: '$480' },
     { id: 'pasta', name: '義大利麵', price: '$210' },
