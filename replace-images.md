@@ -36,6 +36,8 @@ images/
 │   ├── flounder-fish.jpg          # 香煎比目魚 (400x300px)
 │   ├── seafood-combo.jpg          # 海鮮雙饗 (400x300px)
 │   ├── pasta.jpg                  # 義大利麵 (400x300px)
+│   ├── salad.jpg                  # 千島沙拉 (400x300px)
+│   ├── spiral-soup.jpg            # 螺旋脆皮濃湯 (400x300px)
 │   ├── kids-chicken.jpg           # 兒童雞 (400x300px)
 │   ├── kids-pork.jpg              # 兒童豬 (400x300px)
 │   └── kids-sirloin.jpg           # 兒童沙朗 (400x300px)
@@ -92,7 +94,7 @@ images/
 - [ ] `images/menu/menu1.jpg` - 菜單第一頁
 - [ ] `images/menu/menu2.jpg` - 菜單第二頁
 
-### 菜品圖片 (14張)
+### 菜品圖片 (16張)
 - [ ] `images/menu/pork-chop.jpg` - 鮮嫩豬排
 - [ ] `images/menu/chicken-leg.jpg` - 脆皮雞腿排
 - [ ] `images/menu/sirloin-steak.jpg` - 炙烤沙朗
@@ -104,6 +106,8 @@ images/
 - [ ] `images/menu/flounder-fish.jpg` - 香煎比目魚
 - [ ] `images/menu/seafood-combo.jpg` - 海鮮雙饗
 - [ ] `images/menu/pasta.jpg` - 義大利麵
+- [ ] `images/menu/salad.jpg` - 千島沙拉
+- [ ] `images/menu/spiral-soup.jpg` - 螺旋脆皮濃湯
 - [ ] `images/menu/kids-chicken.jpg` - 兒童雞
 - [ ] `images/menu/kids-pork.jpg` - 兒童豬
 - [ ] `images/menu/kids-sirloin.jpg` - 兒童沙朗

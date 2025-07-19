@@ -16,18 +16,43 @@ imageFolders.forEach(folder => {
     }
 });
 
-// 建立SVG圖片內容
-const createSVGImage = (width, height, content) => {
-    return `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" style="stop-color:#F5F5DC;stop-opacity:1" />
-                <stop offset="100%" style="stop-color:#DAA520;stop-opacity:1" />
-            </linearGradient>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#bg)"/>
-        ${content}
-    </svg>`;
+// 建立簡單的HTML圖片內容
+const createHTMLImage = (width, height, content) => {
+    return `<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { margin: 0; padding: 0; }
+        .image-container {
+            width: ${width}px;
+            height: ${height}px;
+            background: linear-gradient(to bottom, #F5F5DC, #DAA520);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #2C1810;
+            font-family: Arial, sans-serif;
+        }
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .price {
+            font-size: 20px;
+            color: #8B4513;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <div class="title">${content.title}</div>
+        <div class="price">${content.price}</div>
+    </div>
+</body>
+</html>`;
 };
 
 // 建立Logo SVG
@@ -103,6 +128,8 @@ const menuItems = [
     { id: 'flounder-fish', name: '香煎比目魚', price: '$290' },
     { id: 'seafood-combo', name: '海鮮雙饗', price: '$480' },
     { id: 'pasta', name: '義大利麵', price: '$210' },
+    { id: 'salad', name: '生菜沙拉', price: '$150' },
+    { id: 'spiral-soup', name: '螺旋脆皮濃湯', price: '$180' },
     { id: 'kids-chicken', name: '兒童雞', price: '$190' },
     { id: 'kids-pork', name: '兒童豬', price: '$180' },
     { id: 'kids-sirloin', name: '兒童沙朗', price: '$200' }

@@ -105,7 +105,7 @@
 
 ### 圖片管理
 - 完整的圖片資料夾結構
-- 自動化圖片生成工具
+- 自動化圖片生成工具 (`create-simple-images.html`)
 - 詳細的圖片對應參照文件
 - 批次圖片處理腳本
 
@@ -156,14 +156,15 @@ images/
 ├── logo/           # 網站Logo
 ├── hero/           # 首頁背景圖片
 ├── about/          # 關於我們圖片
-├── menu/           # 菜品圖片 (14張)
+├── menu/           # 菜品圖片 (16張)
 └── gallery/        # 環境圖片 (4張)
 ```
 
 #### 圖片替換方法
-1. **使用圖片生成器**: 開啟 `create-images.html` 在瀏覽器中生成圖片
-2. **手動替換**: 按照 `images-reference.md` 中的檔案名稱準備圖片
-3. **批次處理**: 使用 `generate-images.js` 腳本自動生成所有圖片
+1. **使用簡單圖片生成器**: 開啟 `create-simple-images.html` 在瀏覽器中生成圖片 (推薦)
+2. **使用互動圖片生成器**: 開啟 `create-images.html` 在瀏覽器中生成圖片
+3. **手動替換**: 按照 `images-reference.md` 中的檔案名稱準備圖片
+4. **批次處理**: 使用 `generate-images.js` 腳本自動生成所有圖片
 
 #### 詳細文件
 - `images-reference.md` - 完整的圖片對應關係說明

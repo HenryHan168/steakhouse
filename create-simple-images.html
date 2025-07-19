@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成簡單圖片</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        .image-container {
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        canvas {
+            border: 1px solid #ddd;
+            margin: 10px 0;
+        }
+        .download-btn {
+            background: #8B4513;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .download-btn:hover {
+            background: #5D2F0A;
+        }
+        h2 {
+            color: #8B4513;
+            border-bottom: 2px solid #DAA520;
+            padding-bottom: 10px;
+        }
+        .instructions {
+            background: #FFF3CD;
+            border: 1px solid #FFEAA7;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>饗家牛排館 - 簡單圖片生成器</h1>
+    
+    <div class="instructions">
+        <h3>📋 使用說明</h3>
+        <p>1. 點擊下方按鈕生成圖片</p>
+        <p>2. 將下載的圖片放入對應的資料夾</p>
+        <p>3. 圖片路徑：<code>images/menu/</code>, <code>images/gallery/</code> 等</p>
+        <p>4. 確保圖片檔案名稱與HTML中的路徑一致</p>
+    </div>
+
+    <!-- Menu Items -->
+    <div class="image-container">
+        <h2>菜品圖片 (16張)</h2>
+        <div id="menuItems"></div>
+    </div>
+
+    <!-- Gallery Images -->
+    <div class="image-container">
+        <h2>環境圖片 (4張)</h2>
+        <div id="galleryItems"></div>
+    </div>
+
+    <script>
+        // 菜品列表
+        const menuItems = [
+            { id: 'pork-chop', name: '鮮嫩豬排', price: '$270' },
+            { id: 'chicken-leg', name: '脆皮雞腿排', price: '$290' },
+            { id: 'sirloin-steak', name: '炙烤沙朗', price: '$310' },
+            { id: 'fillet-steak', name: '炙烤PS菲力', price: '$410' },
+            { id: 'wing-steak', name: 'Prime翼板雪花牛排', price: '$450' },
+            { id: 'lamb-chops', name: '小羔羊排', price: '$550' },
+            { id: 'bone-in-ribeye', name: '炙烤Prime帶骨牛小排', price: '$560' },
+            { id: 'ribeye-steak', name: '炙烤Prime肋眼牛排', price: '$700' },
+            { id: 'flounder-fish', name: '香煎比目魚', price: '$290' },
+            { id: 'seafood-combo', name: '海鮮雙饗', price: '$480' },
+            { id: 'pasta', name: '義大利麵', price: '$210' },
+            { id: 'salad', name: '千島沙拉', price: '+60' },
+            { id: 'spiral-soup', name: '螺旋脆皮濃湯', price: '+80' },
+            { id: 'kids-chicken', name: '兒童雞', price: '$190' },
+            { id: 'kids-pork', name: '兒童豬', price: '$180' },
+            { id: 'kids-sirloin', name: '兒童沙朗', price: '$200' }
+        ];
+
+        // 環境圖片列表
+        const galleryItems = [
+            { id: 'restaurant-interior', name: '餐廳內部' },
+            { id: 'dining-area', name: '用餐區域' },
+            { id: 'private-room', name: '包廂環境' },
+            { id: 'bar-area', name: '吧台區' }
+        ];
+
+        // 生成菜品圖片
+        function createMenuItem(id, name, price) {
+            const container = document.getElementById('menuItems');
+            
+            const div = document.createElement('div');
+            div.style.display = 'inline-block';
+            div.style.margin = '10px';
+            div.style.textAlign = 'center';
+            
+            const canvas = document.createElement('canvas');
+            canvas.width = 400;
+            canvas.height = 300;
+            canvas.id = id + 'Canvas';
+            
+            const ctx = canvas.getContext('2d');
+            
+            // 背景漸層
+            const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+            gradient.addColorStop(0, '#F5F5DC');
+            gradient.addColorStop(1, '#DAA520');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 400, 300);
+            
+            // 菜品示意圖
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(100, 80, 200, 120);
+            
+            // 盤子
+            ctx.fillStyle = '#CD853F';
+            ctx.beginPath();
+            ctx.arc(200, 140, 80, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // 食物
+            ctx.fillStyle = '#A0522D';
+            ctx.fillRect(160, 100, 80, 60);
+            
+            // 文字
+            ctx.fillStyle = '#2C1810';
+            ctx.font = 'bold 24px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(name, 200, 250);
+            
+            ctx.font = 'bold 20px Arial';
+            ctx.fillStyle = '#8B4513';
+            ctx.fillText(price, 200, 280);
+            
+            div.appendChild(canvas);
+            div.appendChild(document.createElement('br'));
+            
+            const btn = document.createElement('button');
+            btn.className = 'download-btn';
+            btn.textContent = `下載 ${name}`;
+            btn.onclick = () => downloadCanvas(id + 'Canvas', id + '.jpg');
+            div.appendChild(btn);
+            
+            container.appendChild(div);
+        }
+
+        // 生成環境圖片
+        function createGalleryItem(id, name) {
+            const container = document.getElementById('galleryItems');
+            
+            const div = document.createElement('div');
+            div.style.display = 'inline-block';
+            div.style.margin = '10px';
+            div.style.textAlign = 'center';
+            
+            const canvas = document.createElement('canvas');
+            canvas.width = 600;
+            canvas.height = 400;
+            canvas.id = id + 'Canvas';
+            
+            const ctx = canvas.getContext('2d');
+            
+            // 背景漸層
+            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, '#F5F5DC');
+            gradient.addColorStop(1, '#CD853F');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 600, 400);
+            
+            // 環境示意圖
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(50, 50, 500, 300);
+            
+            // 裝飾元素
+            ctx.fillStyle = '#DAA520';
+            for (let i = 0; i < 20; i++) {
+                ctx.beginPath();
+                ctx.arc(100 + Math.random() * 400, 100 + Math.random() * 200, Math.random() * 10 + 5, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            
+            // 文字
+            ctx.fillStyle = '#2C1810';
+            ctx.font = 'bold 28px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(name, 300, 350);
+            
+            div.appendChild(canvas);
+            div.appendChild(document.createElement('br'));
+            
+            const btn = document.createElement('button');
+            btn.className = 'download-btn';
+            btn.textContent = `下載 ${name}`;
+            btn.onclick = () => downloadCanvas(id + 'Canvas', id + '.jpg');
+            div.appendChild(btn);
+            
+            container.appendChild(div);
+        }
+
+        // 下載Canvas為圖片
+        function downloadCanvas(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/jpeg', 0.8);
+            link.click();
+        }
+
+        // 初始化
+        window.onload = function() {
+            // 生成菜品圖片
+            menuItems.forEach(item => {
+                createMenuItem(item.id, item.name, item.price);
+            });
+            
+            // 生成環境圖片
+            galleryItems.forEach(item => {
+                createGalleryItem(item.id, item.name);
+            });
+        };
+    </script>
+</body>
+</html> 
